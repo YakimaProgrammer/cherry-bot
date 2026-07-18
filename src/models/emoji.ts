@@ -1,5 +1,5 @@
-import { EmojiStatus, Prisma } from "../generated/prisma/client";
-import { Emoji } from "../types";
+import type { EmojiStatus, Prisma } from "../generated/prisma/client";
+import type { Emoji } from "../types";
 
 async function getActiveEmoji(
   tx: Prisma.TransactionClient,
@@ -29,10 +29,10 @@ async function getActiveEmoji(
         select: {
           usageEvents: {
             where: { guildId },
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   });
 
   return (
@@ -45,7 +45,7 @@ async function getActiveEmoji(
         lastUsage: e.usageEvents.at(0)?.timestamp,
       }))
       .filter((e): e is Emoji => {
-        return !(e.lastUsage == undefined || e.status == undefined);
+        return !(e.lastUsage === undefined || e.status === undefined);
       })
       // Yeah, this could be merged with the previous filter, but that blurs the line a bit for what
       .filter((e) => e.status === "Ok")
@@ -64,7 +64,7 @@ export async function getUserActiveEmoji(
 
 export async function getServerActiveEmoji(
   tx: Prisma.TransactionClient,
-  guildId: string
+  guildId: string,
 ) {
   return await getActiveEmoji(tx, guildId);
 }

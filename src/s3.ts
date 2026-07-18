@@ -1,5 +1,5 @@
-import { Attachment } from "discord.js";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import type { Attachment } from "discord.js";
 
 const s3 = new S3Client({
   region: process.env.S3_REGION ?? "auto",

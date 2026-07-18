@@ -1,7 +1,7 @@
 import { SlashCommandSubcommandBuilder } from "discord.js";
-import { DiscordCommand } from "../types";
-import { referenceEmoji, sendPagedReply, simplePlural } from "../shared";
 import { getUserActiveEmoji } from "../models/emoji";
+import { referenceEmoji, sendPagedReply, simplePlural } from "../shared";
+import type { DiscordCommand } from "../types";
 
 export const command: DiscordCommand = {
   command: new SlashCommandSubcommandBuilder()

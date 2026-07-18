@@ -1,9 +1,9 @@
-import {
+import type {
   AutocompleteInteraction,
   ChatInputCommandInteraction,
   SlashCommandSubcommandBuilder,
 } from "discord.js";
-import { EmojiStatus, PrismaClient } from "./generated/prisma/client";
+import type { EmojiStatus, PrismaClient } from "./generated/prisma/client";
 
 export interface DiscordCommand {
   command: SlashCommandSubcommandBuilder;

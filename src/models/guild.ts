@@ -1,4 +1,4 @@
-import { Prisma } from "../generated/prisma/client";
+import type { Prisma } from "../generated/prisma/client";
 
 const EMOJI_PER_USER_LIMIT = 3;
 const ONE_MONTH_IN_SECONDS = 60 * 60 * 24 * 31;

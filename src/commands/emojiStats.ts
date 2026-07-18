@@ -1,7 +1,7 @@
 import { SlashCommandSubcommandBuilder } from "discord.js";
-import { DiscordCommand } from "../types";
+import { getServerActiveEmoji } from "../models/emoji";
 import { referenceEmoji, sendPagedReply, simplePlural } from "../shared";
-import { getServerActiveEmoji, getUserActiveEmoji } from "../models/emoji";
+import type { DiscordCommand } from "../types";
 
 const DEFAULT_LIMIT = 15;
 
@@ -40,7 +40,10 @@ export const command: DiscordCommand = {
           "This server doesn't have any emoji yet. Create some with `/cherry emoji create`!",
       });
     } else {
-      const header = limit > 0 ? `Here are the top ${limit} ${simplePlural("emoji", limit)} in this server:\n` : "This server has the following emoji:\n";
+      const header =
+        limit > 0
+          ? `Here are the top ${limit} ${simplePlural("emoji", limit)} in this server:\n`
+          : "This server has the following emoji:\n";
       await sendPagedReply(
         interaction,
         true,

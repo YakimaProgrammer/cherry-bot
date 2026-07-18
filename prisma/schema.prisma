@@ -1,6 +1,6 @@
 generator client {
-  provider        = "prisma-client"
-  output          = "../src/generated/prisma"
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -23,61 +23,61 @@ enum UserStatus {
 }
 
 model Emoji {
-  emojiId       String @id
-  cloudflareId  String
-  userId        String
-  timestamp     DateTime @default(now())
-  guildId       String
-  statusEvents  EmojiStatusEvent[]
-  usageEvents   EmojiUsageEvent[]
+  emojiId      String             @id
+  cloudflareId String
+  userId       String
+  timestamp    DateTime           @default(now())
+  guildId      String
+  statusEvents EmojiStatusEvent[]
+  usageEvents  EmojiUsageEvent[]
 
   @@index([userId])
   @@index([guildId])
 }
 
 model EmojiStatusEvent {
-  eventId    Int    @id @default(autoincrement())
-  emojiId    String
-  timestamp  DateTime @default(now())
-  userId     String
-  status     EmojiStatus
+  eventId   Int         @id @default(autoincrement())
+  emojiId   String
+  timestamp DateTime    @default(now())
+  userId    String
+  status    EmojiStatus
 
-  emoji      Emoji @relation(fields: [emojiId], references: [emojiId])
+  emoji Emoji @relation(fields: [emojiId], references: [emojiId])
 
   @@index([emojiId, eventId(sort: Desc)])
   @@index([userId])
 }
 
 model EmojiUsageEvent {
-  eventId    Int    @id @default(autoincrement())
-  emojiId    String
-  timestamp  DateTime @default(now())
-  userId     String
-  channelId  String
-  guildId    String
+  eventId   Int      @id @default(autoincrement())
+  emojiId   String
+  timestamp DateTime @default(now())
+  userId    String
+  channelId String
+  guildId   String
 
-  emoji      Emoji @relation(fields: [emojiId], references: [emojiId])
+  emoji Emoji @relation(fields: [emojiId], references: [emojiId])
 
   @@index([emojiId, eventId(sort: Desc)])
 }
 
 model UserStatusEvent {
-  eventId    Int @id @default(autoincrement())
-  timestamp  DateTime @default(now())
-  userId     String
-  guildId    String
-  status     UserStatus
+  eventId   Int        @id @default(autoincrement())
+  timestamp DateTime   @default(now())
+  userId    String
+  guildId   String
+  status    UserStatus
 
   @@index([userId, guildId, eventId(sort: Desc)])
 }
 
 model AuditEvent {
-  eventId    Int @id @default(autoincrement())
-  timestamp  DateTime @default(now())
-  userId     String
-  guildId    String
-  command    String
-  channelId  String
+  eventId   Int      @id @default(autoincrement())
+  timestamp DateTime @default(now())
+  userId    String
+  guildId   String
+  command   String
+  channelId String
 
   @@index([userId])
   @@index([guildId])

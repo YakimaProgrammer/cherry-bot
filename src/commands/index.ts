@@ -1,11 +1,11 @@
 import { SlashCommandBuilder } from "discord.js";
-import { DiscordCommand } from "../types";
+import type { DiscordCommand } from "../types";
 
 import { command as emojiAdd } from "./emojiAdd";
+import { command as emojiAttach } from "./emojiAttach";
 import { command as emojiDelete } from "./emojiDelete";
 import { command as emojiList } from "./emojiList";
 import { command as emojiStats } from "./emojiStats";
-import { command as emojiAttach } from "./emojiAttach";
 
 export const command = new SlashCommandBuilder()
   .setName("cherry")

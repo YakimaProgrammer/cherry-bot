@@ -1,9 +1,9 @@
 import { PermissionFlagsBits, SlashCommandSubcommandBuilder } from "discord.js";
-import { DiscordCommand } from "../types";
-import { createEmoji, getServerActiveEmoji } from "../models/emoji";
 import { recordAuditEvent } from "../models/audit";
+import { createEmoji, getServerActiveEmoji } from "../models/emoji";
 import { uploadDiscordAttachment } from "../s3";
 import { CHERRY_BOT_USERID, referenceEmoji } from "../shared";
+import type { DiscordCommand } from "../types";
 
 export const command: DiscordCommand = {
   command: new SlashCommandSubcommandBuilder()

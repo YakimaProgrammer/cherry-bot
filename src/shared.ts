@@ -1,6 +1,6 @@
-import { ChatInputCommandInteraction } from "discord.js";
-import { PrismaClient } from "./generated/prisma/client";
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
+import type { ChatInputCommandInteraction } from "discord.js";
+import { PrismaClient } from "./generated/prisma/client";
 
 export const CHERRY_BOT_USERID = "1525906719945916527";
 

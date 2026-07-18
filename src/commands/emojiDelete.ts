@@ -1,11 +1,11 @@
 import { SlashCommandSubcommandBuilder } from "discord.js";
-import { DiscordCommand } from "../types";
+import { recordAuditEvent } from "../models/audit";
 import {
-  pushEmojiStatus,
   getEmojiOwner,
   getUserActiveEmoji,
+  pushEmojiStatus,
 } from "../models/emoji";
-import { recordAuditEvent } from "../models/audit";
+import type { DiscordCommand } from "../types";
 
 export const command: DiscordCommand = {
   command: new SlashCommandSubcommandBuilder()
